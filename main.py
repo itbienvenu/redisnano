@@ -1,7 +1,10 @@
+from storage import cache, load_cache, save_cache
 from commands import set_key, get_data
-from storage import cache
 
+# load_cache()
 
-# set_key("blog:42", {"title": "Hello", "content": "Redis mini"}, ttl=60)
-print(get_data('blog:42'))
-# print(cache)
+set_key("blog:40", {"title": "Bienve", "content": "This is the second test"}, ttl=60)
+
+# print(load_cache())
+
+save_cache()

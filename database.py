@@ -1,18 +1,21 @@
-import hashlib
-import json
+import sqlite3
 
+def init_db():
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE,
+            email TEXT
+        )
+    """)
+    conn.commit()
+    return conn
 
-db = {
-    "blog:42": {"title": "Hello", "content": "Redis mini project"},
-    "blog:43": {"title": "Another blog", "content": "More content"}
-}
-
-def fetch_from_source(key):
-    return db.get(key)
-
-def fetch_hash_from_source(key):
-    value = db.get(key)
-    if value is None:
-        return None
-    serialized = json.dumps(value, sort_keys=True)
-    return hashlib.sha256(serialized.encode()).hexdigest()
+def mock_data():
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO users(id, username, email) VALUES ('1','bienvenu','bienvenu@gmail.com')")
+    conn.commit()
+# mock_data()    
