@@ -16,6 +16,6 @@ def init_db():
 def mock_data():
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users(id, username, email) VALUES ('1','bienvenu','bienvenu@gmail.com')")
+    cursor.execute("INSERT INTO users(id, username, email) VALUES ('2','bagale','gloire@gmail.com')")
     conn.commit()
 # mock_data()    

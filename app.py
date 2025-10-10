@@ -19,4 +19,4 @@ def get_user(username):
         cache.set(username, user, ttl=10)  
         return user
     return None
-print(get_user('bienvenu'))
+print(get_user('bagale'))
